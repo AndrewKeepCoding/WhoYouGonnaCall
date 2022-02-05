@@ -23,6 +23,8 @@
                 FontSize="20"
                 Text="UserControl" />
             <local:EverydayPhrasesUserControl
+                BorderBrush="HotPink"
+                BorderThickness="1"
                 Margin="5"
                 Header="EverydayPhrasesUserControl"
                 PhrasesSource="{x:Bind Phrases}" />
@@ -40,6 +42,8 @@
                 FontSize="20"
                 Text="CustomControls" />
             <local:EverydayPhrasesCustomControl
+                BorderBrush="LightGreen"
+                BorderThickness="1"
                 Margin="5"
                 Header="EverydayPhrasesCustomControl"
                 PhrasesSource="{x:Bind Phrases}" />
