@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WhoYouGonnaCall (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "WhoYouGonnaCall (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
