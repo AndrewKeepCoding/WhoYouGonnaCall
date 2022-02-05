@@ -1,0 +1,46 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WhoYouGonnaCall">
+
+    <Style TargetType="local:EverydayPhrasesCustomControl">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:EverydayPhrasesCustomControl">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock
+                            Grid.Row="0"
+                            Margin="{TemplateBinding Margin}"
+                            Text="{TemplateBinding Header}" />
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox
+                                x:Name="PhraseStart"
+                                Grid.Column="0"
+                                Margin="{TemplateBinding Margin}"
+                                PlaceholderText="Start a phrase..." />
+                            <Button
+                                Grid.Column="1"
+                                Margin="{TemplateBinding Margin}"
+                                Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=CompletePhraseCommand}"
+                                Content="Enter" />
+                            <TextBox
+                                x:Name="PhraseEnd"
+                                Grid.Column="2"
+                                Margin="{TemplateBinding Margin}"
+                                IsReadOnly="True" />
+                        </Grid>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
