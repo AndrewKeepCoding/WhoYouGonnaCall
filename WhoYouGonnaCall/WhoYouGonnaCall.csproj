@@ -12,6 +12,7 @@
     <EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="EverydayPhrasesCustomControl.xaml" />
     <None Remove="EverydayPhrasesUserControl.xaml" />
   </ItemGroup>
 
@@ -39,7 +40,12 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="EverydayPhrasesUserControl.xaml">
+    <Page Update="CustomControls\EverydayPhrasesCustomControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="UserControls\EverydayPhrasesUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Themes\Generic.xaml">

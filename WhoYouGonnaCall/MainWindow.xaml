@@ -12,6 +12,86 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+
+        <!--#region Styles-->
+        <Grid.Resources>
+            <!--  LeftHeaderStyle  -->
+            <Style x:Key="LeftHeaderStyle" TargetType="local:EverydayPhrasesCustomControl">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="local:EverydayPhrasesCustomControl">
+                            <Grid BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    Grid.Column="0"
+                                    Margin="{TemplateBinding Margin}"
+                                    Text="{TemplateBinding Header}" />
+                                <TextBox
+                                    x:Name="PhraseStart"
+                                    Grid.Column="1"
+                                    Margin="{TemplateBinding Margin}"
+                                    PlaceholderText="Start a phrase..." />
+                                <Button
+                                    Grid.Column="2"
+                                    Margin="{TemplateBinding Margin}"
+                                    Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=CompletePhraseCommand}"
+                                    Content="Enter" />
+                                <TextBox
+                                    x:Name="PhraseEnd"
+                                    Grid.Column="3"
+                                    Margin="{TemplateBinding Margin}"
+                                    IsReadOnly="True" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!--  VerticalStyle  -->
+            <Style x:Key="VerticalStyle" TargetType="local:EverydayPhrasesCustomControl">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="local:EverydayPhrasesCustomControl">
+                            <Grid BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock
+                                    Grid.Row="0"
+                                    Margin="{TemplateBinding Margin}"
+                                    Text="{TemplateBinding Header}" />
+                                <TextBox
+                                    x:Name="PhraseStart"
+                                    Grid.Row="1"
+                                    Margin="{TemplateBinding Margin}"
+                                    PlaceholderText="Start a phrase..." />
+                                <Button
+                                    Grid.Row="2"
+                                    Margin="{TemplateBinding Margin}"
+                                    Command="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=CompletePhraseCommand}"
+                                    Content="Enter" />
+                                <TextBox
+                                    x:Name="PhraseEnd"
+                                    Grid.Row="3"
+                                    Margin="{TemplateBinding Margin}"
+                                    IsReadOnly="True" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </Grid.Resources>
+        <!--#endregion-->
+
         <!--#region UserControl-->
         <StackPanel
             Grid.Column="0"
@@ -23,9 +103,9 @@
                 FontSize="20"
                 Text="UserControl" />
             <local:EverydayPhrasesUserControl
+                Margin="5"
                 BorderBrush="HotPink"
                 BorderThickness="1"
-                Margin="5"
                 Header="EverydayPhrasesUserControl"
                 PhrasesSource="{x:Bind Phrases}" />
         </StackPanel>
@@ -41,12 +121,70 @@
                 Margin="5"
                 FontSize="20"
                 Text="CustomControls" />
+            <!--  DefaultStyle  -->
             <local:EverydayPhrasesCustomControl
+                Margin="5"
                 BorderBrush="LightGreen"
                 BorderThickness="1"
-                Margin="5"
                 Header="EverydayPhrasesCustomControl"
                 PhrasesSource="{x:Bind Phrases}" />
+            <!--  LeftHeaderStyle  -->
+            <local:EverydayPhrasesCustomControl
+                Margin="5"
+                BorderBrush="LightGreen"
+                BorderThickness="1"
+                Header="LeftHeaderEverydayPhrasesCustomControl"
+                PhrasesSource="{x:Bind Phrases}"
+                Style="{StaticResource LeftHeaderStyle}" />
+            <!--  VerticalStyle  -->
+            <local:EverydayPhrasesCustomControl
+                Margin="5"
+                BorderBrush="LightGreen"
+                BorderThickness="1"
+                Header="VerticalEverydayPhrasesCustomControl"
+                PhrasesSource="{x:Bind Phrases}"
+                Style="{StaticResource VerticalStyle}" />
+
+            <!--  NoButtonStyle  -->
+            <local:EverydayPhrasesCustomControl
+                Margin="5"
+                BorderBrush="LightGreen"
+                BorderThickness="1"
+                Header="NoButtonEverydayPhrasesCustomControl"
+                PhrasesSource="{x:Bind Phrases}">
+                <local:EverydayPhrasesCustomControl.Style>
+                    <Style TargetType="local:EverydayPhrasesCustomControl">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="local:EverydayPhrasesCustomControl">
+                                    <Grid BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <TextBlock
+                                            Grid.Row="0"
+                                            Margin="{TemplateBinding Margin}"
+                                            Text="{TemplateBinding Header}" />
+                                        <TextBox
+                                            x:Name="PhraseStart"
+                                            Grid.Row="1"
+                                            Margin="{TemplateBinding Margin}"
+                                            PlaceholderText="Start a phrase..." />
+                                        <TextBox
+                                            x:Name="PhraseEnd"
+                                            Grid.Row="2"
+                                            Margin="{TemplateBinding Margin}"
+                                            IsReadOnly="True" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </local:EverydayPhrasesCustomControl.Style>
+            </local:EverydayPhrasesCustomControl>
+
         </StackPanel>
         <!--#endregion-->
     </Grid>
